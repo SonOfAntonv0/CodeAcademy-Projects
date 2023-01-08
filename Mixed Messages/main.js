@@ -1,5 +1,6 @@
-let tweets=require('./myTweets.json');
+import tweets from './myTweets.json' assert {type: 'json'};
 let tweetArr=[]
+console.log()
 for(let elem in tweets){
     tweetArr.push(tweets[elem]);
 }
@@ -9,11 +10,11 @@ let generateRandomTweets= (tweetArr)=>{
     return tweetArr[tweetNum];
 };
 
-let result=generateRandomTweets(tweetArr);
 let button=document.getElementById('generate');
-button.onclick=(event)=>{
-    event.target.innerHTML='Heloo';
-}
+let displayTweet= ()=>{
+    document.getElementById('text').innerHTML=generateRandomTweets(tweetArr);
+};
+button.addEventListener('click',displayTweet);
 
 let context={
     text:result
